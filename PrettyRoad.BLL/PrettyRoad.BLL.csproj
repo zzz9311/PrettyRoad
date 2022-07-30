@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>PrettoRoad.BLL</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PrettyRoad.BLL.Interface\PrettyRoad.BLL.Interface.csproj" />
+      <ProjectReference Include="..\PrettyRoad.Core\PrettyRoad.Core.csproj" />
+      <ProjectReference Include="..\PrettyRoad.DAL.Entities\PrettyRoad.DAL.Entities.csproj" />
+      <ProjectReference Include="..\PrettyRoad.DAL.Interface\PrettyRoad.DAL.Interface.csproj" />
+      <ProjectReference Include="..\PrettyRoad.DAL\PrettyRoad.DAL.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad", "PrettyRoad\PrettyRoad.csproj", "{8EB95A9B-B6DB-4C94-8C47-ACDE1A3581D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.DAL.Entities", "PrettyRoad.DAL.Entities\PrettyRoad.DAL.Entities.csproj", "{1CC62FFD-11B0-4D27-B020-860902D54FF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.DAL", "PrettyRoad.DAL\PrettyRoad.DAL.csproj", "{3FCE603C-78E6-4814-805E-5CA4D201C42E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.DAL.Interface", "PrettyRoad.DAL.Interface\PrettyRoad.DAL.Interface.csproj", "{794E5DF2-25E2-416D-9801-9E5AD7563175}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.BLL", "PrettyRoad.BLL\PrettyRoad.BLL.csproj", "{8BA90D76-7D36-40C0-9323-5418E8089952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.BLL.Interface", "PrettyRoad.BLL.Interface\PrettyRoad.BLL.Interface.csproj", "{FC077287-2D1F-4AE3-9CAD-C3830EE55171}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.Core", "PrettyRoad.Core\PrettyRoad.Core.csproj", "{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EB95A9B-B6DB-4C94-8C47-ACDE1A3581D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EB95A9B-B6DB-4C94-8C47-ACDE1A3581D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EB95A9B-B6DB-4C94-8C47-ACDE1A3581D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EB95A9B-B6DB-4C94-8C47-ACDE1A3581D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CC62FFD-11B0-4D27-B020-860902D54FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC62FFD-11B0-4D27-B020-860902D54FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC62FFD-11B0-4D27-B020-860902D54FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC62FFD-11B0-4D27-B020-860902D54FF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FCE603C-78E6-4814-805E-5CA4D201C42E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FCE603C-78E6-4814-805E-5CA4D201C42E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FCE603C-78E6-4814-805E-5CA4D201C42E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FCE603C-78E6-4814-805E-5CA4D201C42E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{794E5DF2-25E2-416D-9801-9E5AD7563175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794E5DF2-25E2-416D-9801-9E5AD7563175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794E5DF2-25E2-416D-9801-9E5AD7563175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794E5DF2-25E2-416D-9801-9E5AD7563175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BA90D76-7D36-40C0-9323-5418E8089952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA90D76-7D36-40C0-9323-5418E8089952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA90D76-7D36-40C0-9323-5418E8089952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA90D76-7D36-40C0-9323-5418E8089952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC077287-2D1F-4AE3-9CAD-C3830EE55171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC077287-2D1F-4AE3-9CAD-C3830EE55171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC077287-2D1F-4AE3-9CAD-C3830EE55171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC077287-2D1F-4AE3-9CAD-C3830EE55171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
