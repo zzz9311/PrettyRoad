@@ -1,11 +1,31 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.IdentityModel.Tokens;
+using PrettyRoad.BLL;
 using PrettyRoad.DAL;
+using PrettyRoad.JwtAuthenticationOptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDAL();
+builder.Services.AddBLL();
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = JwtOptions.Issuer,
+        ValidateAudience = true,
+        ValidAudience = JwtOptions.Audience,
+        ValidateLifetime = true,
+        IssuerSigningKey = JwtOptions.GetSymmetricSecurityKey(),
+        ValidateIssuerSigningKey = true
+    };
+});
 
 var app = builder.Build();
 
@@ -21,7 +41,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+    
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

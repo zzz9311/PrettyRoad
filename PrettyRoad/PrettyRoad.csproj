@@ -7,7 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\PrettyRoad.BLL.Interface\PrettyRoad.BLL.Interface.csproj" />
+      <ProjectReference Include="..\PrettyRoad.BLL\PrettyRoad.BLL.csproj" />
       <ProjectReference Include="..\PrettyRoad.DAL\PrettyRoad.DAL.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
     </ItemGroup>
 
 </Project>

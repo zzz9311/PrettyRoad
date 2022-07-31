@@ -4,6 +4,7 @@ namespace PrettyRoad.DAL.Interface;
 
 public interface IFinder<T> where T : class
 {
-    Task<T> FindAsync(Expression<Func<T, bool>> expression, CancellationToken cancellation = default);
-    T Find(Expression<Func<T, bool>> expression);
+    ValueTask<T> FindAsync(object[] keys, CancellationToken cancellation = default);
+    ValueTask<T> FindAsync(object key, CancellationToken cancellation = default);
+    T Find(params object[] keys);
 }

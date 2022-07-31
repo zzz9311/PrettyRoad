@@ -8,11 +8,18 @@
 
     <ItemGroup>
       <ProjectReference Include="..\PrettyRoad.Core\PrettyRoad.Core.csproj" />
+      <ProjectReference Include="..\PrettyRoad.DAL.Entities\PrettyRoad.DAL.Entities.csproj" />
       <ProjectReference Include="..\PrettyRoad.DAL.Interface\PrettyRoad.DAL.Interface.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0-preview.6.22329.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.2-mauipre.1.22102.15" />
     </ItemGroup>
 
 </Project>

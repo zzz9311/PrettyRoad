@@ -21,7 +21,16 @@ public class ReadOnlyRepository<T> : IReadOnlyRepository<T> where T : class
 
     public async Task<T[]> ToArrayAsync(CancellationToken cancellationToken = default)
     {
-        return await _set.ToArrayAsync(cancellationToken);
+        try
+        {
+            return await _set.ToArrayAsync(cancellationToken);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
     }
 
     public async Task<T> FindAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)

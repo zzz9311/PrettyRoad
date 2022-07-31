@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using PrettyRoad.Core.DI;
 using PrettyRoad.DAL.Interface;
 
 namespace PrettyRoad.DAL;
@@ -13,13 +14,19 @@ public class Finder<T> : IFinder<T> where T : class
         _set = context.Set<T>();
     }
     
-    public async Task<T> FindAsync(Expression<Func<T, bool>> expression, CancellationToken cancellation = default) //possible null and thats OK
+    
+    public ValueTask<T> FindAsync(object key, CancellationToken cancellation = default) //possible null and thats OK
     {
-        return await _set.FindAsync(expression, cancellation);
+        return _set.FindAsync(new { key });
     }
 
-    public T Find(Expression<Func<T, bool>> expression) //possible null and thats OK
+    public ValueTask<T> FindAsync(object[] keys, CancellationToken cancellationToken = default) //possible null and thats OK
     {
-        return _set.Find(expression);
+        return _set.FindAsync(keys);
+    }
+
+    public T Find(params object[] keys)
+    {
+        return _set.Find(keys);
     }
 }

@@ -1,17 +1,49 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PrettyRoad.DAL.DbConfigures;
+using PrettyRoad.DAL.Entities;
 using PrettyRoad.DAL.Interface;
 
 namespace PrettyRoad.DAL;
 
 public class PrettyRoadDbContext : DbContext, IUnitOfWork
 {
-    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    // private IDbConfigure _dbConfigure;
+    //
+    // public PrettyRoadDbContext(IDbConfigure dbConfigure)
+    // {
+    //     _dbConfigure = dbConfigure;
+    //     Database.Migrate();
+    // }
+
+    public PrettyRoadDbContext():base()
     {
-        await base.SaveChangesAsync(cancellationToken);
+        Database.Migrate();
+    }
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer(connectionString: "Data Source=DESKTOP-PE1JKO4\\SQLEXPRESS;Initial Catalog=Road;Integrated security=true;");
+        // _dbConfigure.Configure(optionsBuilder);
     }
 
-    public void SaveChanges()
+    public async Task SaveAsync(CancellationToken cancellationToken = default)
     {
-        base.SaveChanges();
+        await SaveChangesAsync(cancellationToken);
     }
+
+    public void Save()
+    {
+        try
+        {
+            SaveChanges();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        
+    }
+
+    public DbSet<User> Users { get; set; }
 }

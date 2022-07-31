@@ -2,6 +2,6 @@
 
 public interface IUnitOfWork
 {
-    Task SaveChangesAsync(CancellationToken cancellationToken = default);
-    void SaveChanges();
+    Task SaveAsync(CancellationToken cancellationToken = default);
+    void Save();
 }
