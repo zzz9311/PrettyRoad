@@ -4,16 +4,18 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>6cfa5924-f2f5-4944-a4f1-a93e96c94e90</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\PrettyRoad.BLL.Interface\PrettyRoad.BLL.Interface.csproj" />
       <ProjectReference Include="..\PrettyRoad.BLL\PrettyRoad.BLL.csproj" />
-      <ProjectReference Include="..\PrettyRoad.DAL\PrettyRoad.DAL.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
+      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
     </ItemGroup>
 
 </Project>

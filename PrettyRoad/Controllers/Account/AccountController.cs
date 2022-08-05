@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PrettyRoad.BLL.Interface;
 using PrettyRoad.JwtAuthenticationOptions;
+using PrettyRoad.Models.Account;
 
 namespace PrettyRoad.Controllers.Account;
 
@@ -17,18 +18,18 @@ public class AccountController : ControllerBase
     {
         _userBLL = userBll;
     }
-    
+
     [HttpPost("SignIn")]
     [AllowAnonymous]
-    public async Task<IActionResult> SignInAsync(CancellationToken cancellationToken = default)
+    public async Task<IActionResult> SignInAsync(UserAuthenticationInfo authenticateInfo, CancellationToken cancellationToken = default)
     {
-        var userAuthenticationDetails = await _userBLL.SignInAsync("Tets", "textt", cancellationToken);
+        var userAuthenticationDetails = await _userBLL.SignInAsync(authenticateInfo.Login, authenticateInfo.Password, cancellationToken);
 
         if (userAuthenticationDetails == null)
         {
-            return Ok(); //TODO throw something
+            return BadRequest();
         }
-        
+
         var now = DateTime.UtcNow;
         var jwt = new JwtSecurityToken(
             issuer: JwtOptions.Issuer,
@@ -38,11 +39,11 @@ public class AccountController : ControllerBase
             expires: now.Add(TimeSpan.FromMinutes(JwtOptions.TokenLifeTime)),
             signingCredentials: new SigningCredentials(JwtOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
         var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-        
+
         var response = new
         {
-            access_token = encodedJwt,
-            username = userAuthenticationDetails.Login,
+            AccessToken = encodedJwt,
+            Username = userAuthenticationDetails.Login,
             ID = userAuthenticationDetails.ID
         };
         return Ok(response);
@@ -54,26 +55,20 @@ public class AccountController : ControllerBase
         var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, login),
-                new Claim("id", id.ToString())
+                new Claim("ID", id.ToString())
             };
-        
-            var claimsIdentity =
-                new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
-                    ClaimsIdentity.DefaultRoleClaimType);
-            
-            return claimsIdentity;
-    }
-    
-    
-    public class RegisterModel
-    {
-        public string Login { get; set; }
-        public string Password { get; set; }
-    }
 
+        var claimsIdentity =
+            new ClaimsIdentity(claims, "Token", ClaimsIdentity.DefaultNameClaimType,
+                ClaimsIdentity.DefaultRoleClaimType);
+
+        return claimsIdentity;
+    }
+    
+    
     [HttpPost("Register")]
     [AllowAnonymous]
-    public async Task<IActionResult> RegisterAsync([FromBody] RegisterModel registerModel, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> RegisterAsync([FromBody] UserRegisterModel registerModel, CancellationToken cancellationToken = default)
     {
         await _userBLL.RegisterAsync(registerModel.Login, registerModel.Password, cancellationToken);
         return Ok();
