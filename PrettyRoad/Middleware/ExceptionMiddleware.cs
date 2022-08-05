@@ -19,7 +19,9 @@ namespace PrettyRoad.Middleware
             }
             catch(InvalidObjectException error)
             {
-
+                httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+                var response = new { error = error.Message };
+                await httpContext.Response.WriteAsJsonAsync(response);
             }
             catch (Exception error)
             {

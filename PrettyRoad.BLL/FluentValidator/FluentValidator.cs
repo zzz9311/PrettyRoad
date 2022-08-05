@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using PrettyRoad.BLL.Interface.FluentValidator;
+using PrettyRoad.Core.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace PrettyRoad.BLL.FluentValidator
 
             if(errors.Any())
             {
-                throw new InvalidObject();
+                throw new InvalidObjectException(string.Join("\n", errors.Select(x => x.ErrorMessage)));
             }
         }
     }
