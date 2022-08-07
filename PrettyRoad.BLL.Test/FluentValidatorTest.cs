@@ -8,11 +8,11 @@ using Xunit;
 
 namespace PrettyRoad.BLL.Test;
 
-public class UnitTest1
+public class FluentValidatorTest
 {
     private readonly IFluentValidator<UserEntityTest> _fluentValidator;
 
-    public UnitTest1()
+    public FluentValidatorTest()
     {
         _fluentValidator = new UserValidatorTest();
     }
@@ -41,9 +41,9 @@ public class UnitTest1
             Password = password
         };
 
-        var a = _fluentValidator.Validate(user);
+        var exceptions = _fluentValidator.Validate(user);
 
-        Assert.Equal(expected, a.Length);
+        Assert.Equal(expected, exceptions.Length);
     }
 }
 class UserValidatorTest : FluentValidator<UserEntityTest>
