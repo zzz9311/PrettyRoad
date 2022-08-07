@@ -33,16 +33,8 @@ public class PrettyRoadDbContext : DbContext, IUnitOfWork
 
     public void Save()
     {
-        try
-        {
-            SaveChanges();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        
+        SaveChanges();
+
     }
 
     public DbSet<User> Users { get; set; }
