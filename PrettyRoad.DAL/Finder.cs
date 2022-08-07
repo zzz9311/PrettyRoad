@@ -17,7 +17,7 @@ public class Finder<T> : IFinder<T> where T : class
     
     public ValueTask<T> FindAsync(object key, CancellationToken cancellation = default) //possible null and thats OK
     {
-        return _set.FindAsync(new { key });
+        return _set.FindAsync(key);
     }
 
     public ValueTask<T> FindAsync(object[] keys, CancellationToken cancellationToken = default) //possible null and thats OK

@@ -1,9 +1,12 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PrettyRoad.BLL.Interface;
+using PrettyRoad.BLL.Interface.Users;
+using PrettyRoad.BLL.Users;
 using PrettyRoad.JwtAuthenticationOptions;
 using PrettyRoad.Models.Account;
 
@@ -14,14 +17,25 @@ namespace PrettyRoad.Controllers.Account;
 public class AccountController : ControllerBase
 {
     private readonly IUserBLL _userBLL;
-    public AccountController(IUserBLL userBll)
+    private readonly ICurrentUser _currentUser;
+    
+    public AccountController(IUserBLL userBll,
+                             ICurrentUser currentUser)
     {
         _userBLL = userBll;
+        _currentUser = currentUser;
     }
 
+    [HttpGet("Me")]
+    public async Task<UserInfoDetails> MeAsync(CancellationToken cancellationToken = default)
+    {
+        return await _userBLL.FindUserAsync(_currentUser.ID, cancellationToken);
+    }
+    
+    
     [HttpPost("SignIn")]
     [AllowAnonymous]
-    public async Task<IActionResult> SignInAsync(UserAuthenticationInfo authenticateInfo, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> SignInAsync([FromBody] UserAuthenticationInfo authenticateInfo, CancellationToken cancellationToken = default)
     {
         var userAuthenticationDetails = await _userBLL.SignInAsync(authenticateInfo.Login, authenticateInfo.Password, cancellationToken);
 

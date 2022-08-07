@@ -2,8 +2,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.IdentityModel.Tokens;
 using PrettyRoad.BLL;
+using PrettyRoad.BLL.Users;
 using PrettyRoad.DAL;
+using PrettyRoad.DI;
 using PrettyRoad.JwtAuthenticationOptions;
+using PrettyRoad.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDAL();
 builder.Services.AddBLL();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
 {
@@ -41,7 +47,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-    
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 

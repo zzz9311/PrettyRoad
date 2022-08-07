@@ -10,5 +10,6 @@ namespace PrettyRoad.BLL.Interface.FluentValidator
     {
         ValidateErrorsInfo[] Validate(T validateObject);
         Task<ValidateErrorsInfo[]> ValidateAsync(T validateObject, CancellationToken cancellationToken = default);
+        void ValidateAndThrowException(T validateObject);
     }
 }

@@ -14,7 +14,7 @@ namespace PrettyRoad.BLL.FluentValidator
     {
 
         protected bool IsInit { get; private set; }
-        public abstract void InitializeValidateArguments();
+        protected abstract void InitializeValidateArguments();
 
         private void InitIfNeed()
         {

@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.BLL.Interface", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.Core", "PrettyRoad.Core\PrettyRoad.Core.csproj", "{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrettyRoad.BLL.Test", "PrettyRoad.BLL.Test\PrettyRoad.BLL.Test.csproj", "{F34DEB98-5852-4A43-A8BB-CAF2984095B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{972CA3F0-4E05-4D0F-BBD6-2144CB9180B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F34DEB98-5852-4A43-A8BB-CAF2984095B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34DEB98-5852-4A43-A8BB-CAF2984095B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34DEB98-5852-4A43-A8BB-CAF2984095B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34DEB98-5852-4A43-A8BB-CAF2984095B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

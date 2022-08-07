@@ -1,11 +1,12 @@
 ﻿using System.Security.Cryptography;
+using AutoMapper;
 using PrettyRoad.BLL.Interface;
 using PrettyRoad.BLL.Interface.Users;
 using PrettyRoad.Core.DI;
 using PrettyRoad.DAL.Entities;
 using PrettyRoad.DAL.Interface;
 
-namespace PrettyRoad.BLL;
+namespace PrettyRoad.BLL.Users;
 
 public class UserBLL : IUserBLL, ISelfRegistered<IUserBLL>
 {
@@ -13,16 +14,19 @@ public class UserBLL : IUserBLL, ISelfRegistered<IUserBLL>
     private readonly IRepository<User> _userRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IReadOnlyRepository<User> _userROR;
+    private readonly IMapper _mapper;
 
     public UserBLL(IFinder<User> userFinder, 
                    IRepository<User> userRepository, 
                    IUnitOfWork unitOfWork,
-                   IReadOnlyRepository<User> userRor)
+                   IReadOnlyRepository<User> userRor,
+                   IMapper mapper)
     {
         _userFinder = userFinder;
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
         _userROR = userRor;
+        _mapper = mapper;
     }
 
     public async Task<UserAuthenticateDetails> SignInAsync(string login, string password, CancellationToken cancellationToken = default)
@@ -41,18 +45,14 @@ public class UserBLL : IUserBLL, ISelfRegistered<IUserBLL>
             return null;
         }
 
-        return new UserAuthenticateDetails() //TODO automapper
-        {
-            Login = user.Login,
-            ID = user.ID
-        };
+        return _mapper.Map<UserAuthenticateDetails>(user);
     }
 
     public async Task RegisterAsync(string login, string password, CancellationToken cancellationToken = default)
     {
         var user = new User
         {
-            Email = "asdasd",
+            Email = "textEmail",
             Login = login,
             Name = "textName",
             Password = HashPassword(password)
@@ -60,6 +60,13 @@ public class UserBLL : IUserBLL, ISelfRegistered<IUserBLL>
 
         await _userRepository.InsertAsync(user, cancellationToken);
         await _unitOfWork.SaveAsync(cancellationToken);
+    }
+
+    public async Task<UserInfoDetails> FindUserAsync(Guid userID, CancellationToken cancellationToken = default)
+    {
+        var user = await _userFinder.FindAsync(userID, cancellationToken);
+
+        return _mapper.Map<UserInfoDetails>(user);
     }
 
 

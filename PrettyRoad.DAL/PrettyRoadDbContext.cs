@@ -22,7 +22,7 @@ public class PrettyRoadDbContext : DbContext, IUnitOfWork
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(connectionString: "Data Source=DESKTOP-PE1JKO4\\SQLEXPRESS;Initial Catalog=Road;Integrated security=true;");
+        optionsBuilder.UseSqlServer(connectionString: "");
         // _dbConfigure.Configure(optionsBuilder);
     }
 
