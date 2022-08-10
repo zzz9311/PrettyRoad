@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PrettyRoad.Core.DI;
@@ -18,7 +17,7 @@ public static class ServiceCollectionExtensions
             var connectionString = configuration["Connection_string"];
             return new DbConfigure(connectionString);
         });
-        
+
         serviceCollection.AddDbContext<PrettyRoadDbContext>();
 
         serviceCollection.AddSelfRegistered(Assembly.GetExecutingAssembly());

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PrettyRoad.Core.DI;
 using PrettyRoad.DAL.Interface;
 
 namespace PrettyRoad.DAL;

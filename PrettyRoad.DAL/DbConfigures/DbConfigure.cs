@@ -13,6 +13,6 @@ public class DbConfigure : IDbConfigure
 
     public void Configure(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(connectionString: _connectionString);
+        optionsBuilder.UseSqlServer(_connectionString);
     }
 }

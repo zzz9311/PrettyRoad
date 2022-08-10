@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PrettyRoad.DAL.DbConfigures;
 using PrettyRoad.DAL.Entities;
 using PrettyRoad.DAL.Interface;
 
@@ -15,16 +14,12 @@ public class PrettyRoadDbContext : DbContext, IUnitOfWork
     //     Database.Migrate();
     // }
 
-    public PrettyRoadDbContext():base()
+    public PrettyRoadDbContext()
     {
         Database.Migrate();
     }
-    
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer(connectionString: "");
-        // _dbConfigure.Configure(optionsBuilder);
-    }
+
+    public DbSet<User> Users { get; set; }
 
     public async Task SaveAsync(CancellationToken cancellationToken = default)
     {
@@ -33,17 +28,12 @@ public class PrettyRoadDbContext : DbContext, IUnitOfWork
 
     public void Save()
     {
-        try
-        {
-            SaveChanges();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        
+        SaveChanges();
     }
 
-    public DbSet<User> Users { get; set; }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("");
+        // _dbConfigure.Configure(optionsBuilder);
+    }
 }
